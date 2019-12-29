@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  api: 
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: swp_api
+    restart: always
+    networks:
+      - swp_network
+    volumes:
+      - .:/home/swp
+    ports:
+      - '${SERVER_PORT}:3000'
+
+networks:
+  swp_network:
+    driver: bridge
+
